@@ -1,0 +1,273 @@
+body {
+	background: white;
+	font: {
+		family: $font--body;
+		size: 85%;
+	}
+	color: $gray;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+
+	overflow-x: hidden;
+
+	@include small { font-size: 90%; }
+	@include medium { font-size: 95%; }
+	@include large { font-size: 100%; }
+}
+
+* {
+	transition: 0.25s;
+}
+
+h1 {
+	font: {
+		family: $font--heading;
+		size: 3.5em;
+		weight: normal;
+	}
+	color: $gray;
+	line-height: 1.15;
+
+	margin-bottom: 1.725rem;
+}
+
+h2 {
+	font: {
+		family: $font--heading;
+		size: 2.55em;
+		weight: normal;
+	}
+	color: $gray;
+	line-height: 1.15;
+
+	margin: 0 0 1.5rem;
+}
+
+a  {
+	color: $maroon;
+	text-decoration: underline;
+	
+
+	&:hover, &:focus {
+		color: rgba($maroon, 0.6);
+	}
+	&:active {
+		color: $gray;
+	}
+}
+
+p, ul, ol, p a {
+	hyphens: auto;
+	word-break: break-word;
+
+	font-size: 1.25rem;
+	margin-bottom: 1rem;
+	line-height: 1.6;
+}
+
+p.lead {
+	font: {
+		family: $font--body;
+		size: 2.125em;
+	}
+	line-height: 1.4;
+	// color: $maroon;
+	color: $gray;
+	margin-bottom: 2rem;
+}
+
+a.button {
+	border-radius: 10px;
+	padding: 1.25rem;
+	display: inline-block;
+	transition: 0.185s;
+	text-decoration: none;
+
+	background: $maroon;
+	font: {
+		family: $font--heading;
+		weight: 700;
+		size: 1.325rem;
+	}
+	color: $pink--light;
+	// box-shadow: 5px 5px 0 $pink--dark;
+	box-shadow: 5px 5px 0 rgba($maroon, 0.5);
+
+	&:hover, &:focus {
+		background: darken($maroon, 5%);
+		box-shadow: 5px 5px 0 darken($pink--dark, 5%);
+	}
+
+	&:active {
+		transform: translate(5px, 5px);
+		box-shadow: none;
+	}
+}
+
+section {
+	// padding: 10vw 0;
+}
+
+section.hero {
+	@extend %full-bg;
+	background-image: url('/assets/img/hero.jpg');
+
+	min-height: 100vh;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: center;
+
+	figure {
+		padding: 2.5rem;
+		background: rgba(#00827d, 0.9);
+
+		img {
+			width: 200px;
+		}
+
+		figcaption {
+			margin-top: 1rem;
+			letter-spacing: 7px;
+			font: {
+				family: 'proxima_novasemibold';
+				size: 1.425rem;
+				// weight: 500;
+			}
+			color: white;
+			text-transform: uppercase;
+			text-align: center;
+		}
+	}
+}
+
+section.intro {
+	display: grid;
+
+	@include large {
+		grid-template-columns: 5fr 9fr 4fr;
+		grid-template-areas: ". text image";
+	}
+
+	@extend %full-bg;
+	background-image: linear-gradient(to bottom, rgba($pink--light, 0.8), rgba($pink--light, 0.8)), url('../img/veg.png');
+
+	@include large {
+		background: white;
+	}
+
+	main {
+		grid-area: text;
+		padding: 5rem;
+
+		@include large {
+			padding: 10vw 0;
+			width: 80%;
+		}
+	}
+
+	img {
+		display: none;
+
+		@include large {
+			display: block;
+			grid-area: image;
+			height: 100%;
+			object-fit: cover;
+		}
+		
+	}
+}
+
+section.beta {
+	@extend %full-bg;
+	display: grid;
+
+	@include medium {
+		grid-template-columns: 8fr 12fr 2fr;
+		grid-template-areas: ". main .";
+	}
+
+	@include x-large {
+		grid-template-columns: 8fr 7fr 2fr;
+		grid-template-areas: ". main .";
+	}
+	
+	background-image: url('/assets/img/bake.jpg');
+	padding: 10vw 0;
+
+	main {
+		padding: 5rem;
+		background: rgba(#efccc3, 0.8);
+		overflow: visible;
+		grid-area: main;
+
+
+		@include large {
+			width: 60%;
+
+			background: #efccc3;
+		}
+	}
+}
+
+section.footer {
+	@extend %full-bg;
+	background-image: url('/assets/img/footer-bg.jpg');
+	// height: 100vh;
+
+	main {
+		display: grid;
+		grid-template-columns: 3fr 1fr 8fr;
+		grid-template-areas: "img . main";
+
+		
+		background: rgba(#00827d, 0.9);
+		color: white;
+		width: 80%;
+
+		@include large {
+			width: 50%;
+		}
+		
+		height: 100%;
+
+		h2 { color: white; }
+
+		img {
+			grid-area: img;
+		}
+
+		article {
+			grid-area: main;
+			padding: 10vw 0;
+
+			width: 80%;
+
+			@include large {
+				width: 50%;
+			}
+			
+		}
+
+		.socials {
+			margin-top: 2rem;
+			display: flex;
+			flex-flow: row nowrap;
+			justify-content: space-between;
+
+			img {
+				fill: currentColor;
+				color: white;
+
+				&:hover, &:focus {
+					opacity: 0.6;
+				}
+			}
+		}
+
+		small {
+			margin-top: 5rem;
+		}
+	}
+}
